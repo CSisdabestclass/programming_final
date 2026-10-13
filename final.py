@@ -3,7 +3,7 @@
 score = 0
 lives = 1
 play_start = input(f"Would you like to play the game? 'Y' if yes, 'N' if no: " ).upper
-
+high_score = high_score.txt
 if play_start == "Y":
     def main():
         
@@ -162,7 +162,7 @@ if play_start == "Y":
                 choice_2 = input("You grab Fred by the armpits and drag him through the forest. You search for hours. The sun is going down. After about 4 hours of searching, you come across a small and welcoming cave right by a river. You set Fred down in the cave. You're safe for now, but what do you do?\n(A): Start working on a campfire.\n(B): Grab some water for Fred.")
                 if choice_2 == "A" or "a":
                     print("You gather sticks, stones, and dry leaves. You begin on your campfire, but by the time it's finished, Fred is already dead. You later die due to demotivation and greif. You died. Your score was {score}.")
-                
+                print(f"The high score is {high_score}.")
             if choice_1.isalpha():
                 print("That's not an option...")
             else:
@@ -179,5 +179,14 @@ if play_start == "Y":
 elif: 
     play_start == "N"
     print("No worries. Bye Bye!")   
+
+with open("highscore.txt", "r") as file:
+    high_score = int(file.read())
+
+if score > high_score:
+    high_score = score
+
+    with open("highscore.txt", "w") as file:
+        file.write(str(high_score))
 
 
