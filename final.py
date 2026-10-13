@@ -116,6 +116,7 @@ if play_start == "Y":
                 print("You notice a cabin in the map. If you get to the cabin, you will be safe.")
                 print("You run out of the plane and you find out that the flames from the plane got to your friend and he died. Just as your grieving your friends death, you hear a\n growl behind you.")
                 print("""
+        
                     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⡴⠶⣶⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
         ⠀⠀⣼⣶⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⠃⠀⠀⠀⠘⢿⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
         ⠀⠀⢹⣏⡿⢿⣿⡦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠇⠀⠀⣴⣴⡀⠘⢻⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -167,17 +168,11 @@ if play_start == "Y":
                 print("That's not an option...")
             else:
                  break
-   # while True:
-        #if lives == 0:
-            #print("Game Over!")
-        #main()
-
-        #play_again = input("Do you want to play again? ").lower()
-
-    #if play_again == "yes":
-       #lives == 1
 elif: 
     play_start == "N"
-    print("No worries. Bye Bye!")   
+    print("No worries. Bye Bye!")
 
+with open("highscore.txt", "r") as file:
+    high_score = int(file.read())
 
+if score > high
