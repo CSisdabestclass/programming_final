@@ -10,7 +10,7 @@ inventory = []
 try:
     with open("highscore.txt", "r") as file:
         high_score = int(file.read().strip())
-except (FileNotFoundError, ValueError):
+except
     high_score = 0
 
 
@@ -113,7 +113,6 @@ def show_map():
             ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢘⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
             ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⠃⠀⠀
             """)
-                    print("It's a wolf! And he looks hungry.")
 
 def show_inventory():
     if len(inventory) == 0:
@@ -213,94 +212,6 @@ def wolf_scene(username):
 
         else:
             print("That's not an option. Enter 1, 2, or 3.")
-
-
-def plane_route(username):
-    global score
-
-    score += 1
-    inventory.append("map")
-
-    print("\nYou run into the burning plane and find a piece of paper in the smoke.")
-    print("It's a map!")
-    show_map()
-    print(f"{username} notices a cabin on the map. If you reach it, you might be safe.")
-    print("You run out of the plane, but the flames have reached Fred. He dies.")
-    print("As you grieve, you hear a growl behind you.")
-
-    return wolf_scene(username)
-
-
-def cave_route(username):
-    global score
-
-    score += 1
-    print(
-        f"\n{username} grabs Fred by the armpits and drags him through the forest. "
-        "After about four hours, you find a small cave beside a river. "
-        "The sun is going down. What do you do?"
-    )
-
-    while True:
-        choice = input(
-            "A: Start a campfire.\n"
-            "B: Get water for Fred.\n"
-            "Choose A or B: "
-        ).strip().upper()
-
-        if choice == "A":
-            print("You gather sticks, stones, and dry leaves and make a campfire.")
-            print("By the time it is finished, Fred has died.")
-            print("A couple of hours pass, and your stomach begins to growl.")
-
-            while True:
-                food_choice = input(
-                    "1: Search for food in the dark.\n"
-                    "2: Consider eating Fred, then change your mind.\n"
-                    "Choose 1 or 2: "
-                ).strip()
-
-                if food_choice == "1":
-                    print("You search for berries and rabbits but bump into a hungry bear. You died.")
-                    return False
-
-                elif food_choice == "2":
-                    print("You realize you cannot bring yourself to eat your friend.")
-                    print("You go searching for food, but a hungry bear finds you first. You died.")
-                    return False
-
-                else:
-                    print("That's not an option. Enter 1 or 2.")
-
-        elif choice == "B":
-            score += 1
-            print("You collect water from the creek for Fred. It may not be safe to drink.")
-
-            while True:
-                roll_choice = input("Enter R to roll the die of chance: ").strip().upper()
-
-                if roll_choice == "R":
-                    roll = random.randint(1, 6)
-                    print("You rolled a", roll, ".")
-
-                    if roll >= 4:
-                        print("Fred survives and has enough strength to continue.")
-                        score += 2
-
-                        if "water" not in inventory:
-                            inventory.append("water")
-
-                        return cabin_and_puzzle(username, False, True)
-
-                    else:
-                        print("Fred does not survive. You are overcome by exhaustion and grief. You died.")
-                        return False
-
-                else:
-                    print("Please enter R to roll the die.")
-
-        else:
-            print("That's not an option. Enter A or B.")
 
 
 def main():
